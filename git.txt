@@ -1,0 +1,1 @@
+I am facing an issue where I placed the `git.txt` file in the main `textutils` folder. As a result, the same folder on GitHub was uploaded with an arrow icon and is not opening.
