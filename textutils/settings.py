@@ -9,12 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-b&owf6m8f8hk4=)1wfbmc@gel*ne&oq5792lo8)fv++-bp5xpn')
+SECRET_KEY = 'django-insecure-b&owf6m8f8hk4=)1wfbmc@gel*ne&oq5792lo8)fv++-bp5xpn'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']  # Consider setting your Heroku app's domain later for security
+ALLOWED_HOSTS = ['*']  # Consider setting specific hosts in production
 
 
 # Application definition
@@ -30,7 +30,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -107,10 +106,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Define STATIC_ROOT
-
-# Configure WhiteNoise to serve static files efficiently on Heroku
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware') # Ensure WhiteNoise is correctly placed in middleware
 
 
 # Default primary key field type
